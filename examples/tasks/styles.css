@@ -1,0 +1,329 @@
+:root {
+  color-scheme: dark;
+  font-family:
+    Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+    sans-serif;
+  background: #080b0d;
+  color: #f1f7f4;
+  font-synthesis: none;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  min-width: 320px;
+  min-height: 100vh;
+  margin: 0;
+  background:
+    radial-gradient(circle at 82% 8%, rgb(58 255 174 / 10%), transparent 25rem),
+    linear-gradient(135deg, #080b0d 0%, #0b1112 58%, #07100d 100%);
+}
+
+button,
+input {
+  font: inherit;
+}
+
+.shell {
+  width: min(1120px, calc(100% - 32px));
+  margin: 0 auto;
+  padding: 72px 0 64px;
+}
+
+.hero {
+  position: relative;
+  padding: 0 2px 44px;
+}
+
+.hero::after {
+  position: absolute;
+  right: 0;
+  bottom: 44px;
+  width: 138px;
+  height: 138px;
+  border: 1px solid rgb(112 255 191 / 18%);
+  border-radius: 50%;
+  box-shadow:
+    0 0 0 28px rgb(112 255 191 / 3%),
+    inset 0 0 40px rgb(112 255 191 / 4%);
+  content: "";
+}
+
+.eyebrow,
+.pipeline,
+footer,
+.task-copy small,
+.stats small {
+  font-family: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+  letter-spacing: 0.09em;
+}
+
+.eyebrow {
+  color: #72ffbf;
+  font-size: 0.72rem;
+}
+
+h1 {
+  max-width: 780px;
+  margin: 18px 0 14px;
+  font-size: clamp(3rem, 8vw, 6.8rem);
+  font-weight: 650;
+  letter-spacing: -0.075em;
+  line-height: 0.88;
+}
+
+.lede {
+  max-width: 680px;
+  margin: 24px 0 28px;
+  color: #9eaaa5;
+  font-size: clamp(1rem, 2vw, 1.18rem);
+  line-height: 1.7;
+}
+
+.pipeline {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: center;
+  color: #6e7c76;
+  font-size: 0.68rem;
+}
+
+.pipeline span {
+  padding: 7px 10px;
+  border: 1px solid #23302b;
+  background: #0d1312;
+}
+
+.pipeline b {
+  color: #5ce9a8;
+  font-weight: 400;
+}
+
+.workspace {
+  overflow: hidden;
+  border: 1px solid #26332f;
+  border-radius: 20px;
+  background: rgb(12 17 16 / 86%);
+  box-shadow: 0 30px 90px rgb(0 0 0 / 38%);
+  backdrop-filter: blur(18px);
+}
+
+.toolbar {
+  display: grid;
+  grid-template-columns: minmax(260px, 1fr) auto;
+  gap: 28px;
+  align-items: end;
+  padding: 28px;
+  border-bottom: 1px solid #202c28;
+}
+
+.search {
+  display: grid;
+  gap: 9px;
+  color: #a9b6b0;
+  font-size: 0.78rem;
+}
+
+.search input {
+  width: 100%;
+  padding: 13px 15px;
+  border: 1px solid #2d3d37;
+  border-radius: 10px;
+  outline: none;
+  background: #080d0c;
+  color: #eef8f3;
+  transition: border-color 150ms ease, box-shadow 150ms ease;
+}
+
+.search input:focus {
+  border-color: #61dca1;
+  box-shadow: 0 0 0 3px rgb(97 220 161 / 12%);
+}
+
+.stats {
+  display: flex;
+  gap: 12px;
+}
+
+.stats > div {
+  display: grid;
+  min-width: 68px;
+  padding: 10px 12px;
+  border-left: 1px solid #2a3733;
+  font-size: 1.35rem;
+  font-variant-numeric: tabular-nums;
+}
+
+.stats small {
+  margin-top: 3px;
+  color: #5f7068;
+  font-size: 0.54rem;
+}
+
+.task-list {
+  display: grid;
+  gap: 1px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  background: #202b27;
+}
+
+.task {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  gap: 16px;
+  align-items: center;
+  min-height: 78px;
+  padding: 16px 22px;
+  background: #0d1312;
+  transition: background 140ms ease, opacity 140ms ease;
+}
+
+.task:hover {
+  background: #111a17;
+}
+
+.task.completed {
+  opacity: 0.55;
+}
+
+.task.completed strong {
+  text-decoration: line-through;
+  text-decoration-color: #65746d;
+}
+
+.check {
+  position: relative;
+  display: grid;
+  width: 24px;
+  height: 24px;
+  cursor: pointer;
+  place-items: center;
+}
+
+.check input {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+}
+
+.check span {
+  display: block;
+  width: 20px;
+  height: 20px;
+  border: 1px solid #52635b;
+  border-radius: 50%;
+  transition: 140ms ease;
+}
+
+.check input:checked + span {
+  border-color: #72ffbf;
+  background: #72ffbf;
+  box-shadow: inset 0 0 0 5px #0d1312;
+}
+
+.check input:focus-visible + span {
+  outline: 2px solid #72ffbf;
+  outline-offset: 3px;
+}
+
+.task-copy {
+  display: grid;
+  gap: 6px;
+  min-width: 0;
+}
+
+.task-copy strong {
+  overflow: hidden;
+  font-size: 0.96rem;
+  font-weight: 550;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.task-copy small {
+  color: #607169;
+  font-size: 0.58rem;
+}
+
+.task-actions {
+  display: flex;
+  gap: 7px;
+}
+
+.task-actions button {
+  width: 34px;
+  height: 34px;
+  border: 1px solid #2b3934;
+  border-radius: 8px;
+  background: transparent;
+  color: #8da098;
+  cursor: pointer;
+  transition: 120ms ease;
+}
+
+.task-actions button:hover {
+  border-color: #5b776b;
+  color: #ecfff6;
+  transform: translateY(-1px);
+}
+
+.task-actions .remove:hover {
+  border-color: #b95c68;
+  color: #ff9eaa;
+}
+
+footer {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 24px;
+  padding: 17px 22px;
+  color: #52635b;
+  font-size: 0.55rem;
+}
+
+footer span:last-child {
+  margin-left: auto;
+  color: #72ffbf;
+}
+
+@media (max-width: 720px) {
+  .shell {
+    width: min(100% - 20px, 1120px);
+    padding-top: 40px;
+  }
+
+  .hero::after {
+    display: none;
+  }
+
+  .toolbar {
+    grid-template-columns: 1fr;
+  }
+
+  .stats {
+    justify-content: stretch;
+  }
+
+  .stats > div {
+    flex: 1;
+  }
+
+  .task {
+    padding-inline: 16px;
+  }
+
+  .task-actions .promote {
+    display: none;
+  }
+
+  footer span:last-child {
+    width: 100%;
+    margin-left: 0;
+  }
+}

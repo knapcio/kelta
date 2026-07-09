@@ -1,0 +1,33 @@
+{
+  "name": "kelta",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "UI by change, not rerender — a transactional incremental UI compiler",
+  "license": "MIT",
+  "keywords": [
+    "frontend",
+    "compiler",
+    "incremental",
+    "reactive",
+    "resumability",
+    "dom"
+  ],
+  "exports": {
+    ".": "./src/index.js",
+    "./compiler": "./src/compiler.js",
+    "./runtime": "./src/runtime/engine.js",
+    "./browser": "./src/runtime/browser.js"
+  },
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "dev": "node scripts/dev.mjs",
+    "serve": "node scripts/serve.mjs",
+    "test": "node --test",
+    "bench": "node benchmarks/engine.mjs",
+    "check": "npm test && npm run build && npm run bench"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}
