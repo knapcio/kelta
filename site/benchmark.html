@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#07100d">
+    <meta name="description" content="Kelta versus production React 19 with React Compiler: methodology, raw browser samples, artifact sizes and limitations.">
+    <link rel="canonical" href="https://knapcio.github.io/kelta/benchmark.html">
+    <link rel="icon" href="./favicon.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="./styles.css?v=0.2.0">
+    <script src="./benchmark-page.js?v=0.2.0" defer></script>
+    <title>Kelta × React — reproducible comparison</title>
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <header class="site-header">
+      <div class="header-inner">
+        <a class="brand" href="./" aria-label="Kelta home">
+          <svg class="brand-mark" viewBox="0 0 48 48" aria-hidden="true">
+            <path d="M24 4 5 42h38L24 4Z"></path><path d="M15.5 31h17"></path>
+            <circle cx="24" cy="4" r="2.6"></circle><circle cx="5" cy="42" r="2.6"></circle><circle cx="43" cy="42" r="2.6"></circle>
+          </svg>
+          <span>KELTA</span>
+        </a>
+        <nav class="primary-nav" aria-label="Primary navigation">
+          <a href="./#why">Why</a><a href="./#architecture">Architecture</a>
+          <a href="./#benchmarks" aria-current="page">Benchmarks</a><a href="./#demo">Demo</a>
+        </nav>
+        <a class="repo-link" href="https://github.com/knapcio/kelta" target="_blank" rel="noreferrer">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 0 0-3.16 19.49c.5.09.68-.22.68-.48v-1.87c-2.78.6-3.37-1.18-3.37-1.18-.45-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.61.07-.61 1 .07 1.53 1.03 1.53 1.03.9 1.53 2.35 1.09 2.92.83.09-.65.35-1.09.64-1.34-2.22-.25-4.56-1.11-4.56-4.94 0-1.09.39-1.98 1.03-2.68-.1-.25-.45-1.27.1-2.64 0 0 .84-.27 2.75 1.02A9.6 9.6 0 0 1 12 6.82a9.6 9.6 0 0 1 2.5.34c1.91-1.29 2.75-1.02 2.75-1.02.55 1.37.2 2.39.1 2.64.64.7 1.03 1.59 1.03 2.68 0 3.84-2.34 4.68-4.57 4.93.36.31.68.92.68 1.86V21c0 .27.18.58.69.48A10 10 0 0 0 12 2Z"></path></svg>
+          <span>GitHub</span>
+        </a>
+      </div>
+    </header>
+
+    <main id="main" class="benchmark-doc page-shell">
+      <header class="benchmark-doc-hero">
+        <p class="section-kicker">REPRODUCIBLE BROWSER COMPARISON</p>
+        <h1>Kelta <em>×</em> React</h1>
+        <p>The same server-rendered list, data and asserted outcomes. React runs in production mode with stable React Compiler. Every raw sample is published—including results Kelta loses.</p>
+        <div class="hero-actions">
+          <a class="button button-primary" href="./benchmark-runner/">Run it in this browser <span aria-hidden="true">→</span></a>
+          <a class="button button-quiet" href="https://github.com/knapcio/kelta/blob/main/docs/react-comparison.md">Full methodology <span aria-hidden="true">↗</span></a>
+        </div>
+      </header>
+
+      <aside class="honesty-note"><strong>No universal score.</strong><span>This measures one synchronous, non-virtualized list/query workload on one disclosed machine and browser.</span></aside>
+
+      <section class="result-panel" aria-labelledby="latest-title">
+        <div class="result-heading">
+          <div><p class="mono-label">CHECKED-IN RUN</p><h2 id="latest-title">Latest 10,000-row result</h2></div>
+          <p id="result-meta" role="status">Loading raw result…</p>
+        </div>
+        <div class="result-scroll">
+          <table class="result-table">
+            <caption>Median and p95 milliseconds. Lower is better within the same column.</caption>
+            <thead><tr><th scope="col">Workload</th><th scope="col">Kelta DOM-ready</th><th scope="col">React DOM-ready</th><th scope="col">Kelta next frame</th><th scope="col">React next frame</th></tr></thead>
+            <tbody id="timing-body"><tr><td colspan="5">Loading…</td></tr></tbody>
+          </table>
+        </div>
+        <div class="result-scroll artifact-results">
+          <table class="result-table">
+            <caption>Production artifact model. Shared CSS excluded.</caption>
+            <thead><tr><th scope="col">Artifact</th><th scope="col">Kelta raw / gzip / Brotli</th><th scope="col">React raw / gzip / Brotli</th></tr></thead>
+            <tbody id="artifact-body"><tr><td colspan="3">Loading…</td></tr></tbody>
+          </table>
+        </div>
+        <div class="result-links">
+          <a href="./results/react-comparison.json">Raw JSON <span aria-hidden="true">↓</span></a>
+          <a href="https://github.com/knapcio/kelta/tree/main/benchmarks/react-comparison">Harness source <span aria-hidden="true">↗</span></a>
+        </div>
+      </section>
+
+      <section class="benchmark-doc-section" aria-labelledby="baseline-title">
+        <p class="section-kicker">01 / BASELINE</p><h2 id="baseline-title">React gets its strongest stable setup.</h2>
+        <div class="docs-grid docs-grid-three">
+          <article><span>REACT</span><h3>19.2.7 production</h3><p>Static prerender plus <code>hydrateRoot</code>; no development runtime or StrictMode overhead.</p></article>
+          <article><span>COMPILER</span><h3>Stable 1.0</h3><p>The build fails unless React Compiler emits its compiler-runtime cache import.</p></article>
+          <article><span>STATE</span><h3>Idiomatic reducer</h3><p>Immutable rows, stable numeric keys and derived filter/order/count state.</p></article>
+        </div>
+      </section>
+
+      <section class="benchmark-doc-section" aria-labelledby="workloads-title">
+        <p class="section-kicker">02 / WORKLOADS</p><h2 id="workloads-title">Strong paths and broad invalidation.</h2>
+        <ol class="workload-list">
+          <li><span>01</span><div><strong>Activation</strong><p>Resume marker scan versus hydration, after server HTML is inserted.</p></div></li>
+          <li><span>02</span><div><strong>Scalar label</strong><p>One midpoint text and ARIA update.</p></div></li>
+          <li><span>03</span><div><strong>Boolean + aggregate</strong><p>Checkbox, class and active-count update.</p></div></li>
+          <li><span>04</span><div><strong>Keyed reorder</strong><p>Move the midpoint row to the front without replacing its node.</p></div></li>
+          <li><span>05</span><div><strong>Global filter</strong><p>Remove all but one row, then restore the complete DOM.</p></div></li>
+        </ol>
+      </section>
+
+      <section class="benchmark-doc-section" aria-labelledby="limits-title">
+        <p class="section-kicker">03 / INTERPRETATION</p><h2 id="limits-title">What the table does not contain.</h2>
+        <div class="docs-grid">
+          <article><h3>Not a cold-navigation trace</h3><p>Activation excludes HTML insertion and JavaScript parse/evaluation. Sizes are reported, but network, FCP and LCP are not yet traced.</p></article>
+          <article><h3>Not presentation time</h3><p>The next-frame metric stops at a requestAnimationFrame callback. A browser trace is still needed to split scripting, style, layout and paint.</p></article>
+          <article><h3>Not all of React</h3><p>Kelta lacks React's async, transition, Suspense, error-boundary and ecosystem surface. This suite tests a narrow shared subset.</p></article>
+          <article><h3>Not the final baseline set</h3><p>A React + incremental external-store variant is still needed to separate renderer cost from derived-data strategy.</p></article>
+        </div>
+      </section>
+
+      <section class="benchmark-doc-cta">
+        <p class="section-kicker">REPRODUCE, THEN CHALLENGE</p><h2>Run the harness. Inspect the samples. Improve the losing path.</h2>
+        <div class="hero-actions"><a class="button button-primary" href="./benchmark-runner/">Open benchmark runner <span aria-hidden="true">→</span></a><a class="button button-quiet" href="./">Back to Kelta <span aria-hidden="true">←</span></a></div>
+      </section>
+    </main>
+
+    <footer class="site-footer"><div class="page-shell footer-inner"><div><a class="brand footer-brand" href="./" aria-label="Kelta home"><svg class="brand-mark" viewBox="0 0 48 48" aria-hidden="true"><path d="M24 4 5 42h38L24 4Z"></path><path d="M15.5 31h17"></path></svg><span>KELTA</span></a><p>UI by change, not rerender.</p></div><p class="footer-meta">Experimental software · MIT licensed<br>Raw results, exact versions, explicit caveats.</p></div></footer>
+  </body>
+</html>

@@ -2,6 +2,12 @@
 
 All notable changes will be documented here. Kelta follows semantic versioning once a public API is declared stable.
 
+## Unreleased
+
+- Added a matched production React 19.2.7 + React Compiler 1.0 browser comparison with raw samples, DOM assertions and compressed artifact accounting.
+- Added a GitHub Pages documentation site, dedicated benchmark report and live compiled demo.
+- Documented the benchmark's unfavorable results and interpretation limits, including Kelta's current resumption-scan bottleneck.
+
 ## 0.1.0 — 2026-07-09
 
 Initial architecture prototype.

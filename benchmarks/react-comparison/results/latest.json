@@ -1,0 +1,1751 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-07-09T20:14:34.503Z",
+  "suite": "Kelta vs React — matched SSG activation and browser interactions",
+  "configuration": {
+    "rows": 10000,
+    "activationSamples": 3,
+    "warmups": 2,
+    "samples": 10,
+    "broadSamples": 10
+  },
+  "versions": {
+    "kelta": "0.1.0",
+    "react": "19.2.7",
+    "reactDom": "19.2.7",
+    "reactCompiler": "1.0.0",
+    "esbuild": "0.28.1",
+    "playwrightCore": "1.61.1"
+  },
+  "environment": {
+    "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/150.0.0.0 Safari/537.36",
+    "platform": "MacIntel",
+    "hardwareConcurrency": 18,
+    "deviceMemoryGiB": 32,
+    "crossOriginIsolated": false,
+    "browserChannel": "chrome",
+    "headless": true,
+    "viewport": "1280x900"
+  },
+  "artifacts": {
+    "sharedCssExcluded": true,
+    "kelta": {
+      "html": {
+        "raw": 3732282,
+        "gzip": 303807,
+        "brotli": 105568
+      },
+      "clientJavaScript": {
+        "raw": 503047,
+        "gzip": 90655,
+        "brotli": 35075
+      },
+      "total": {
+        "raw": 4235329,
+        "gzip": 394462,
+        "brotli": 140643
+      }
+    },
+    "react": {
+      "html": {
+        "raw": 2726522,
+        "gzip": 202713,
+        "brotli": 84989
+      },
+      "clientJavaScript": {
+        "raw": 198679,
+        "gzip": 61942,
+        "brotli": 53157
+      },
+      "total": {
+        "raw": 2925201,
+        "gzip": 264655,
+        "brotli": 138146
+      }
+    }
+  },
+  "activation": {
+    "label": "server-rendered activation (HTML insertion and JS parse excluded)",
+    "kelta": {
+      "domReadyMs": {
+        "samples": 3,
+        "min": 1611.2,
+        "median": 1637.9,
+        "p95": 1783.3,
+        "max": 1783.3,
+        "mean": 1677.4667
+      },
+      "nextFrameMs": {
+        "samples": 3,
+        "min": 1638.1,
+        "median": 1719.4,
+        "p95": 1898.5,
+        "max": 1898.5,
+        "mean": 1752
+      },
+      "raw": [
+        {
+          "domReadyMs": 1637.9000000059605,
+          "nextFrameMs": 1638.0999999940395,
+          "domMutations": {
+            "records": 0,
+            "attributes": 0,
+            "characterData": 0,
+            "childList": 0,
+            "addedNodes": 0,
+            "removedNodes": 0
+          },
+          "frameworkWork": {
+            "patches": 0,
+            "collectionOperations": 0,
+            "reconciliations": 0,
+            "changedRows": 0,
+            "changedCells": 0,
+            "changedAggregates": 0
+          }
+        },
+        {
+          "domReadyMs": 1611.199999988079,
+          "nextFrameMs": 1719.4000000059605,
+          "domMutations": {
+            "records": 0,
+            "attributes": 0,
+            "characterData": 0,
+            "childList": 0,
+            "addedNodes": 0,
+            "removedNodes": 0
+          },
+          "frameworkWork": {
+            "patches": 0,
+            "collectionOperations": 0,
+            "reconciliations": 0,
+            "changedRows": 0,
+            "changedCells": 0,
+            "changedAggregates": 0
+          }
+        },
+        {
+          "domReadyMs": 1783.2999999821186,
+          "nextFrameMs": 1898.5,
+          "domMutations": {
+            "records": 0,
+            "attributes": 0,
+            "characterData": 0,
+            "childList": 0,
+            "addedNodes": 0,
+            "removedNodes": 0
+          },
+          "frameworkWork": {
+            "patches": 0,
+            "collectionOperations": 0,
+            "reconciliations": 0,
+            "changedRows": 0,
+            "changedCells": 0,
+            "changedAggregates": 0
+          }
+        }
+      ]
+    },
+    "react": {
+      "domReadyMs": {
+        "samples": 3,
+        "min": 146.6,
+        "median": 156.2,
+        "p95": 161.4,
+        "max": 161.4,
+        "mean": 154.7333
+      },
+      "nextFrameMs": {
+        "samples": 3,
+        "min": 146.7,
+        "median": 161.5,
+        "p95": 161.9,
+        "max": 161.9,
+        "mean": 156.7
+      },
+      "raw": [
+        {
+          "domReadyMs": 156.19999998807907,
+          "nextFrameMs": 161.89999997615814,
+          "domMutations": {
+            "records": 16666,
+            "attributes": 16666,
+            "characterData": 0,
+            "childList": 0,
+            "addedNodes": 0,
+            "removedNodes": 0
+          },
+          "frameworkWork": null
+        },
+        {
+          "domReadyMs": 146.60000002384186,
+          "nextFrameMs": 146.7000000178814,
+          "domMutations": {
+            "records": 16666,
+            "attributes": 16666,
+            "characterData": 0,
+            "childList": 0,
+            "addedNodes": 0,
+            "removedNodes": 0
+          },
+          "frameworkWork": null
+        },
+        {
+          "domReadyMs": 161.39999997615814,
+          "nextFrameMs": 161.5,
+          "domMutations": {
+            "records": 16666,
+            "attributes": 16666,
+            "characterData": 0,
+            "childList": 0,
+            "addedNodes": 0,
+            "removedNodes": 0
+          },
+          "frameworkWork": null
+        }
+      ]
+    }
+  },
+  "interactions": {
+    "label": {
+      "label": "one row label",
+      "kelta": {
+        "domReadyMs": {
+          "samples": 10,
+          "min": 4.9,
+          "median": 5.8,
+          "p95": 6.8,
+          "max": 6.8,
+          "mean": 5.79
+        },
+        "nextFrameMs": {
+          "samples": 10,
+          "min": 13.4,
+          "median": 14.7,
+          "p95": 24.8,
+          "max": 24.8,
+          "mean": 16.24
+        },
+        "raw": [
+          {
+            "domReadyMs": 6.199999988079071,
+            "nextFrameMs": 24.799999982118607,
+            "domMutations": {
+              "records": 2,
+              "attributes": 1,
+              "characterData": 1,
+              "childList": 0,
+              "addedNodes": 0,
+              "removedNodes": 0
+            },
+            "frameworkWork": {
+              "patches": 2,
+              "collectionOperations": 0,
+              "reconciliations": 0,
+              "changedRows": 1,
+              "changedCells": 0,
+              "changedAggregates": 0
+            }
+          },
+          {
+            "domReadyMs": 6.799999982118607,
+            "nextFrameMs": 15,
+            "domMutations": {
+              "records": 2,
+              "attributes": 1,
+              "characterData": 1,
+              "childList": 0,
+              "addedNodes": 0,
+              "removedNodes": 0
+            },
+            "frameworkWork": {
+              "patches": 2,
+              "collectionOperations": 0,
+              "reconciliations": 0,
+              "changedRows": 1,
+              "changedCells": 0,
+              "changedAggregates": 0
+            }
+          },
+          {
+            "domReadyMs": 5.9000000059604645,
+            "nextFrameMs": 14.200000017881393,
+            "domMutations": {
+              "records": 2,
+              "attributes": 1,
+              "characterData": 1,
+              "childList": 0,
+              "addedNodes": 0,
+              "removedNodes": 0
+            },
+            "frameworkWork": {
+              "patches": 2,
+              "collectionOperations": 0,
+              "reconciliations": 0,
+              "changedRows": 1,
+              "changedCells": 0,
+              "changedAggregates": 0
+            }
+          },
+          {
+            "domReadyMs": 4.9000000059604645,
+            "nextFrameMs": 18.19999998807907,
+            "domMutations": {
+              "records": 2,
+              "attributes": 1,
+              "characterData": 1,
+              "childList": 0,
+              "addedNodes": 0,
+              "removedNodes": 0
+            },
+            "frameworkWork": {
+              "patches": 2,
+              "collectionOperations": 0,
+              "reconciliations": 0,
+              "changedRows": 1,
+              "changedCells": 0,
+              "changedAggregates": 0
+            }
+          },
+          {
+            "domReadyMs": 5.200000017881393,
+            "nextFrameMs": 13.400000005960464,
+            "domMutations": {
+              "records": 2,
+              "attributes": 1,
+              "characterData": 1,
+              "childList": 0,
+              "addedNodes": 0,
+              "removedNodes": 0
+            },
+            "frameworkWork": {
+              "patches": 2,
+              "collectionOperations": 0,
+              "reconciliations": 0,
+              "changedRows": 1,
+              "changedCells": 0,
+              "changedAggregates": 0
+            }
+          },
+          {
+            "domReadyMs": 5.300000011920929,
+            "nextFrameMs": 18.80000001192093,
+            "domMutations": {
+              "records": 2,
+              "attributes": 1,
+              "characterData": 1,
+              "childList": 0,
+              "addedNodes": 0,
+              "removedNodes": 0
+            },
+            "frameworkWork": {
+              "patches": 2,
+              "collectionOperations": 0,
+              "reconciliations": 0,
+              "changedRows": 1,
+              "changedCells": 0,
+              "changedAggregates": 0
+            }
+          },
+          {
+            "domReadyMs": 5.4000000059604645,
+            "nextFrameMs": 14.900000005960464,
+            "domMutations": {
+              "records": 2,
+              "attributes": 1,
+              "characterData": 1,
+              "childList": 0,
+              "addedNodes": 0,
+              "removedNodes": 0
+            },
+            "frameworkWork": {
+              "patches": 2,
+              "collectionOperations": 0,
+              "reconciliations": 0,
+              "changedRows": 1,
+              "changedCells": 0,
+              "changedAggregates": 0
+            }
+          },
+          {
+            "domReadyMs": 6.0999999940395355,
+            "nextFrameMs": 14.599999994039536,
+            "domMutations": {
+              "records": 2,
+              "attributes": 1,
+              "characterData": 1,
+              "childList": 0,
+              "addedNodes": 0,
+              "removedNodes": 0
+            },
+            "frameworkWork": {
+              "patches": 2,
+              "collectionOperations": 0,
+              "reconciliations": 0,
+              "changedRows": 1,
+              "changedCells": 0,
+              "changedAggregates": 0
+            }
+          },
+          {
+            "domReadyMs": 6.299999982118607,
+            "nextFrameMs": 14.699999988079071,
+            "domMutations": {
+              "records": 2,
+              "attributes": 1,
+              "characterData": 1,
+              "childList": 0,
+              "addedNodes": 0,
+              "removedNodes": 0
+            },
+            "frameworkWork": {
+              "patches": 2,
+              "collectionOperations": 0,
+              "reconciliations": 0,
+              "changedRows": 1,
+              "changedCells": 0,
+              "changedAggregates": 0
+            }
+          },
+          {
+            "domReadyMs": 5.799999982118607,
+            "nextFrameMs": 13.799999982118607,
+            "domMutations": {
+              "records": 2,
+              "attributes": 1,
+              "characterData": 1,
+              "childList": 0,
+              "addedNodes": 0,
+              "removedNodes": 0
+            },
+            "frameworkWork": {
+              "patches": 2,
+              "collectionOperations": 0,
+              "reconciliations": 0,
+              "changedRows": 1,
+              "changedCells": 0,
+              "changedAggregates": 0
+            }
+          }
+        ]
+      },
+      "react": {
+        "domReadyMs": {
+          "samples": 10,
+          "min": 3,
+          "median": 3.2,
+          "p95": 3.8,
+          "max": 3.8,
+          "mean": 3.31
+        },
+        "nextFrameMs": {
+          "samples": 10,
+          "min": 11.6,
+          "median": 11.9,
+          "p95": 17.4,
+          "max": 17.4,
+          "mean": 13.33
+        },
+        "raw": [
+          {
+            "domReadyMs": 3.800000011920929,
+            "nextFrameMs": 12.400000005960464,
+            "domMutations": {
+              "records": 5,
+              "attributes": 4,
+              "characterData": 1,
+              "childList": 0,
+              "addedNodes": 0,
+              "removedNodes": 0
+            },
+            "frameworkWork": null
+          },
+          {
+            "domReadyMs": 3.0999999940395355,
+            "nextFrameMs": 11.699999988079071,
+            "domMutations": {
+              "records": 5,
+              "attributes": 4,
+              "characterData": 1,
+              "childList": 0,
+              "addedNodes": 0,
+              "removedNodes": 0
+            },
+            "frameworkWork": null
+          },
+          {
+            "domReadyMs": 3.199999988079071,
+            "nextFrameMs": 16.900000005960464,
+            "domMutations": {
+              "records": 5,
+              "attributes": 4,
+              "characterData": 1,
+              "childList": 0,
+              "addedNodes": 0,
+              "removedNodes": 0
+            },
+            "frameworkWork": null
+          },
+          {
+            "domReadyMs": 3.0999999940395355,
+            "nextFrameMs": 11.599999994039536,
+            "domMutations": {
+              "records": 5,
+              "attributes": 4,
+              "characterData": 1,
+              "childList": 0,
+              "addedNodes": 0,
+              "removedNodes": 0
+            },
+            "frameworkWork": null
+          },
+          {
+            "domReadyMs": 3.5999999940395355,
+            "nextFrameMs": 17.400000005960464,
+            "domMutations": {
+              "records": 5,
+              "attributes": 4,
+              "characterData": 1,
+              "childList": 0,
+              "addedNodes": 0,
+              "removedNodes": 0
+            },
+            "frameworkWork": null
+          },
+          {
+            "domReadyMs": 3.199999988079071,
+            "nextFrameMs": 12,
+            "domMutations": {
+              "records": 5,
+              "attributes": 4,
+              "characterData": 1,
+              "childList": 0,
+              "addedNodes": 0,
+              "removedNodes": 0
+            },
+            "frameworkWork": null
+          },
+          {
+            "domReadyMs": 3.5,
+            "nextFrameMs": 16.099999994039536,
+            "domMutations": {
+              "records": 5,
+              "attributes": 4,
+              "characterData": 1,
+              "childList": 0,
+              "addedNodes": 0,
+              "removedNodes": 0
+            },
+            "frameworkWork": null
+          },
+          {
+            "domReadyMs": 3.300000011920929,
+            "nextFrameMs": 11.900000005960464,
+            "domMutations": {
+              "records": 5,
+              "attributes": 4,
+              "characterData": 1,
+              "childList": 0,
+              "addedNodes": 0,
+              "removedNodes": 0
+            },
+            "frameworkWork": null
+          },
+          {
+            "domReadyMs": 3,
+            "nextFrameMs": 11.599999994039536,
+            "domMutations": {
+              "records": 5,
+              "attributes": 4,
+              "characterData": 1,
+              "childList": 0,
+              "addedNodes": 0,
+              "removedNodes": 0
+            },
+            "frameworkWork": null
+          },
+          {
+            "domReadyMs": 3.300000011920929,
+            "nextFrameMs": 11.700000017881393,
+            "domMutations": {
+              "records": 5,
+              "attributes": 4,
+              "characterData": 1,
+              "childList": 0,
+              "addedNodes": 0,
+              "removedNodes": 0
+            },
+            "frameworkWork": null
+          }
+        ]
+      }
+    },
+    "toggle": {
+      "label": "one row boolean + aggregate",
+      "kelta": {
+        "domReadyMs": {
+          "samples": 10,
+          "min": 4.8,
+          "median": 5.7,
+          "p95": 6.1,
+          "max": 6.1,
+          "mean": 5.45
+        },
+        "nextFrameMs": {
+          "samples": 10,
+          "min": 6.2,
+          "median": 7,
+          "p95": 25.5,
+          "max": 25.5,
+          "mean": 8.72
+        },
+        "raw": [
+          {
+            "domReadyMs": 5.9000000059604645,
+            "nextFrameMs": 25.5,
+            "domMutations": {
+              "records": 2,
+              "attributes": 1,
+              "characterData": 1,
+              "childList": 0,
+              "addedNodes": 0,
+              "removedNodes": 0
+            },
+            "frameworkWork": {
+              "patches": 3,
+              "collectionOperations": 0,
+              "reconciliations": 0,
+              "changedRows": 1,
+              "changedCells": 0,
+              "changedAggregates": 1
+            }
+          },
+          {
+            "domReadyMs": 4.799999982118607,
+            "nextFrameMs": 6.199999988079071,
+            "domMutations": {
+              "records": 2,
+              "attributes": 1,
+              "characterData": 1,
+              "childList": 0,
+              "addedNodes": 0,
+              "removedNodes": 0
+            },
+            "frameworkWork": {
+              "patches": 3,
+              "collectionOperations": 0,
+              "reconciliations": 0,
+              "changedRows": 1,
+              "changedCells": 0,
+              "changedAggregates": 1
+            }
+          },
+          {
+            "domReadyMs": 4.799999982118607,
+            "nextFrameMs": 6.199999988079071,
+            "domMutations": {
+              "records": 2,
+              "attributes": 1,
+              "characterData": 1,
+              "childList": 0,
+              "addedNodes": 0,
+              "removedNodes": 0
+            },
+            "frameworkWork": {
+              "patches": 3,
+              "collectionOperations": 0,
+              "reconciliations": 0,
+              "changedRows": 1,
+              "changedCells": 0,
+              "changedAggregates": 1
+            }
+          },
+          {
+            "domReadyMs": 4.899999976158142,
+            "nextFrameMs": 6.5,
+            "domMutations": {
+              "records": 2,
+              "attributes": 1,
+              "characterData": 1,
+              "childList": 0,
+              "addedNodes": 0,
+              "removedNodes": 0
+            },
+            "frameworkWork": {
+              "patches": 3,
+              "collectionOperations": 0,
+              "reconciliations": 0,
+              "changedRows": 1,
+              "changedCells": 0,
+              "changedAggregates": 1
+            }
+          },
+          {
+            "domReadyMs": 4.799999982118607,
+            "nextFrameMs": 6.199999988079071,
+            "domMutations": {
+              "records": 2,
+              "attributes": 1,
+              "characterData": 1,
+              "childList": 0,
+              "addedNodes": 0,
+              "removedNodes": 0
+            },
+            "frameworkWork": {
+              "patches": 3,
+              "collectionOperations": 0,
+              "reconciliations": 0,
+              "changedRows": 1,
+              "changedCells": 0,
+              "changedAggregates": 1
+            }
+          },
+          {
+            "domReadyMs": 6.0999999940395355,
+            "nextFrameMs": 7.5,
+            "domMutations": {
+              "records": 2,
+              "attributes": 1,
+              "characterData": 1,
+              "childList": 0,
+              "addedNodes": 0,
+              "removedNodes": 0
+            },
+            "frameworkWork": {
+              "patches": 3,
+              "collectionOperations": 0,
+              "reconciliations": 0,
+              "changedRows": 1,
+              "changedCells": 0,
+              "changedAggregates": 1
+            }
+          },
+          {
+            "domReadyMs": 5.9000000059604645,
+            "nextFrameMs": 7.5,
+            "domMutations": {
+              "records": 2,
+              "attributes": 1,
+              "characterData": 1,
+              "childList": 0,
+              "addedNodes": 0,
+              "removedNodes": 0
+            },
+            "frameworkWork": {
+              "patches": 3,
+              "collectionOperations": 0,
+              "reconciliations": 0,
+              "changedRows": 1,
+              "changedCells": 0,
+              "changedAggregates": 1
+            }
+          },
+          {
+            "domReadyMs": 5.700000017881393,
+            "nextFrameMs": 7,
+            "domMutations": {
+              "records": 2,
+              "attributes": 1,
+              "characterData": 1,
+              "childList": 0,
+              "addedNodes": 0,
+              "removedNodes": 0
+            },
+            "frameworkWork": {
+              "patches": 3,
+              "collectionOperations": 0,
+              "reconciliations": 0,
+              "changedRows": 1,
+              "changedCells": 0,
+              "changedAggregates": 1
+            }
+          },
+          {
+            "domReadyMs": 5.800000011920929,
+            "nextFrameMs": 7.200000017881393,
+            "domMutations": {
+              "records": 2,
+              "attributes": 1,
+              "characterData": 1,
+              "childList": 0,
+              "addedNodes": 0,
+              "removedNodes": 0
+            },
+            "frameworkWork": {
+              "patches": 3,
+              "collectionOperations": 0,
+              "reconciliations": 0,
+              "changedRows": 1,
+              "changedCells": 0,
+              "changedAggregates": 1
+            }
+          },
+          {
+            "domReadyMs": 5.800000011920929,
+            "nextFrameMs": 7.4000000059604645,
+            "domMutations": {
+              "records": 2,
+              "attributes": 1,
+              "characterData": 1,
+              "childList": 0,
+              "addedNodes": 0,
+              "removedNodes": 0
+            },
+            "frameworkWork": {
+              "patches": 3,
+              "collectionOperations": 0,
+              "reconciliations": 0,
+              "changedRows": 1,
+              "changedCells": 0,
+              "changedAggregates": 1
+            }
+          }
+        ]
+      },
+      "react": {
+        "domReadyMs": {
+          "samples": 10,
+          "min": 3,
+          "median": 3.2,
+          "p95": 3.4,
+          "max": 3.4,
+          "mean": 3.21
+        },
+        "nextFrameMs": {
+          "samples": 10,
+          "min": 4.2,
+          "median": 4.5,
+          "p95": 4.7,
+          "max": 4.7,
+          "mean": 4.47
+        },
+        "raw": [
+          {
+            "domReadyMs": 3.2000000178813934,
+            "nextFrameMs": 4.5,
+            "domMutations": {
+              "records": 5,
+              "attributes": 4,
+              "characterData": 1,
+              "childList": 0,
+              "addedNodes": 0,
+              "removedNodes": 0
+            },
+            "frameworkWork": null
+          },
+          {
+            "domReadyMs": 3.2000000178813934,
+            "nextFrameMs": 4.5,
+            "domMutations": {
+              "records": 5,
+              "attributes": 4,
+              "characterData": 1,
+              "childList": 0,
+              "addedNodes": 0,
+              "removedNodes": 0
+            },
+            "frameworkWork": null
+          },
+          {
+            "domReadyMs": 3.199999988079071,
+            "nextFrameMs": 4.5,
+            "domMutations": {
+              "records": 5,
+              "attributes": 4,
+              "characterData": 1,
+              "childList": 0,
+              "addedNodes": 0,
+              "removedNodes": 0
+            },
+            "frameworkWork": null
+          },
+          {
+            "domReadyMs": 3.199999988079071,
+            "nextFrameMs": 4.399999976158142,
+            "domMutations": {
+              "records": 5,
+              "attributes": 4,
+              "characterData": 1,
+              "childList": 0,
+              "addedNodes": 0,
+              "removedNodes": 0
+            },
+            "frameworkWork": null
+          },
+          {
+            "domReadyMs": 3.199999988079071,
+            "nextFrameMs": 4.399999976158142,
+            "domMutations": {
+              "records": 5,
+              "attributes": 4,
+              "characterData": 1,
+              "childList": 0,
+              "addedNodes": 0,
+              "removedNodes": 0
+            },
+            "frameworkWork": null
+          },
+          {
+            "domReadyMs": 3.2999999821186066,
+            "nextFrameMs": 4.5999999940395355,
+            "domMutations": {
+              "records": 5,
+              "attributes": 4,
+              "characterData": 1,
+              "childList": 0,
+              "addedNodes": 0,
+              "removedNodes": 0
+            },
+            "frameworkWork": null
+          },
+          {
+            "domReadyMs": 3.199999988079071,
+            "nextFrameMs": 4.5,
+            "domMutations": {
+              "records": 5,
+              "attributes": 4,
+              "characterData": 1,
+              "childList": 0,
+              "addedNodes": 0,
+              "removedNodes": 0
+            },
+            "frameworkWork": null
+          },
+          {
+            "domReadyMs": 3.4000000059604645,
+            "nextFrameMs": 4.699999988079071,
+            "domMutations": {
+              "records": 5,
+              "attributes": 4,
+              "characterData": 1,
+              "childList": 0,
+              "addedNodes": 0,
+              "removedNodes": 0
+            },
+            "frameworkWork": null
+          },
+          {
+            "domReadyMs": 3.199999988079071,
+            "nextFrameMs": 4.4000000059604645,
+            "domMutations": {
+              "records": 5,
+              "attributes": 4,
+              "characterData": 1,
+              "childList": 0,
+              "addedNodes": 0,
+              "removedNodes": 0
+            },
+            "frameworkWork": null
+          },
+          {
+            "domReadyMs": 3,
+            "nextFrameMs": 4.200000017881393,
+            "domMutations": {
+              "records": 5,
+              "attributes": 4,
+              "characterData": 1,
+              "childList": 0,
+              "addedNodes": 0,
+              "removedNodes": 0
+            },
+            "frameworkWork": null
+          }
+        ]
+      }
+    },
+    "reorder": {
+      "label": "keyed midpoint → front",
+      "kelta": {
+        "domReadyMs": {
+          "samples": 10,
+          "min": 5.8,
+          "median": 6.6,
+          "p95": 7.3,
+          "max": 7.3,
+          "mean": 6.61
+        },
+        "nextFrameMs": {
+          "samples": 10,
+          "min": 64.5,
+          "median": 70,
+          "p95": 136.8,
+          "max": 136.8,
+          "mean": 80.65
+        },
+        "raw": [
+          {
+            "domReadyMs": 7.0999999940395355,
+            "nextFrameMs": 136.80000001192093,
+            "domMutations": {
+              "records": 3,
+              "attributes": 0,
+              "characterData": 1,
+              "childList": 2,
+              "addedNodes": 1,
+              "removedNodes": 1
+            },
+            "frameworkWork": {
+              "patches": 1,
+              "collectionOperations": 1,
+              "reconciliations": 0,
+              "changedRows": 1,
+              "changedCells": 0,
+              "changedAggregates": 0
+            }
+          },
+          {
+            "domReadyMs": 6.5,
+            "nextFrameMs": 68.19999998807907,
+            "domMutations": {
+              "records": 3,
+              "attributes": 0,
+              "characterData": 1,
+              "childList": 2,
+              "addedNodes": 1,
+              "removedNodes": 1
+            },
+            "frameworkWork": {
+              "patches": 1,
+              "collectionOperations": 1,
+              "reconciliations": 0,
+              "changedRows": 1,
+              "changedCells": 0,
+              "changedAggregates": 0
+            }
+          },
+          {
+            "domReadyMs": 7.299999982118607,
+            "nextFrameMs": 70,
+            "domMutations": {
+              "records": 3,
+              "attributes": 0,
+              "characterData": 1,
+              "childList": 2,
+              "addedNodes": 1,
+              "removedNodes": 1
+            },
+            "frameworkWork": {
+              "patches": 1,
+              "collectionOperations": 1,
+              "reconciliations": 0,
+              "changedRows": 1,
+              "changedCells": 0,
+              "changedAggregates": 0
+            }
+          },
+          {
+            "domReadyMs": 6,
+            "nextFrameMs": 93.30000001192093,
+            "domMutations": {
+              "records": 3,
+              "attributes": 0,
+              "characterData": 1,
+              "childList": 2,
+              "addedNodes": 1,
+              "removedNodes": 1
+            },
+            "frameworkWork": {
+              "patches": 1,
+              "collectionOperations": 1,
+              "reconciliations": 0,
+              "changedRows": 1,
+              "changedCells": 0,
+              "changedAggregates": 0
+            }
+          },
+          {
+            "domReadyMs": 6.899999976158142,
+            "nextFrameMs": 68.89999997615814,
+            "domMutations": {
+              "records": 3,
+              "attributes": 0,
+              "characterData": 1,
+              "childList": 2,
+              "addedNodes": 1,
+              "removedNodes": 1
+            },
+            "frameworkWork": {
+              "patches": 1,
+              "collectionOperations": 1,
+              "reconciliations": 0,
+              "changedRows": 1,
+              "changedCells": 0,
+              "changedAggregates": 0
+            }
+          },
+          {
+            "domReadyMs": 6.0999999940395355,
+            "nextFrameMs": 64.5,
+            "domMutations": {
+              "records": 3,
+              "attributes": 0,
+              "characterData": 1,
+              "childList": 2,
+              "addedNodes": 1,
+              "removedNodes": 1
+            },
+            "frameworkWork": {
+              "patches": 1,
+              "collectionOperations": 1,
+              "reconciliations": 0,
+              "changedRows": 1,
+              "changedCells": 0,
+              "changedAggregates": 0
+            }
+          },
+          {
+            "domReadyMs": 5.800000011920929,
+            "nextFrameMs": 70,
+            "domMutations": {
+              "records": 3,
+              "attributes": 0,
+              "characterData": 1,
+              "childList": 2,
+              "addedNodes": 1,
+              "removedNodes": 1
+            },
+            "frameworkWork": {
+              "patches": 1,
+              "collectionOperations": 1,
+              "reconciliations": 0,
+              "changedRows": 1,
+              "changedCells": 0,
+              "changedAggregates": 0
+            }
+          },
+          {
+            "domReadyMs": 7.0999999940395355,
+            "nextFrameMs": 77.7000000178814,
+            "domMutations": {
+              "records": 3,
+              "attributes": 0,
+              "characterData": 1,
+              "childList": 2,
+              "addedNodes": 1,
+              "removedNodes": 1
+            },
+            "frameworkWork": {
+              "patches": 1,
+              "collectionOperations": 1,
+              "reconciliations": 0,
+              "changedRows": 1,
+              "changedCells": 0,
+              "changedAggregates": 0
+            }
+          },
+          {
+            "domReadyMs": 6.699999988079071,
+            "nextFrameMs": 84.40000000596046,
+            "domMutations": {
+              "records": 3,
+              "attributes": 0,
+              "characterData": 1,
+              "childList": 2,
+              "addedNodes": 1,
+              "removedNodes": 1
+            },
+            "frameworkWork": {
+              "patches": 1,
+              "collectionOperations": 1,
+              "reconciliations": 0,
+              "changedRows": 1,
+              "changedCells": 0,
+              "changedAggregates": 0
+            }
+          },
+          {
+            "domReadyMs": 6.5999999940395355,
+            "nextFrameMs": 72.7000000178814,
+            "domMutations": {
+              "records": 3,
+              "attributes": 0,
+              "characterData": 1,
+              "childList": 2,
+              "addedNodes": 1,
+              "removedNodes": 1
+            },
+            "frameworkWork": {
+              "patches": 1,
+              "collectionOperations": 1,
+              "reconciliations": 0,
+              "changedRows": 1,
+              "changedCells": 0,
+              "changedAggregates": 0
+            }
+          }
+        ]
+      },
+      "react": {
+        "domReadyMs": {
+          "samples": 10,
+          "min": 40.6,
+          "median": 41.2,
+          "p95": 45.2,
+          "max": 45.2,
+          "mean": 41.97
+        },
+        "nextFrameMs": {
+          "samples": 10,
+          "min": 95.1,
+          "median": 101.3,
+          "p95": 129.6,
+          "max": 129.6,
+          "mean": 104.05
+        },
+        "raw": [
+          {
+            "domReadyMs": 42.900000005960464,
+            "nextFrameMs": 97.09999999403954,
+            "domMutations": {
+              "records": 9999,
+              "attributes": 0,
+              "characterData": 1,
+              "childList": 9998,
+              "addedNodes": 4999,
+              "removedNodes": 4999
+            },
+            "frameworkWork": null
+          },
+          {
+            "domReadyMs": 41,
+            "nextFrameMs": 95.10000002384186,
+            "domMutations": {
+              "records": 9999,
+              "attributes": 0,
+              "characterData": 1,
+              "childList": 9998,
+              "addedNodes": 4999,
+              "removedNodes": 4999
+            },
+            "frameworkWork": null
+          },
+          {
+            "domReadyMs": 40.599999994039536,
+            "nextFrameMs": 103.40000000596046,
+            "domMutations": {
+              "records": 9999,
+              "attributes": 0,
+              "characterData": 1,
+              "childList": 9998,
+              "addedNodes": 4999,
+              "removedNodes": 4999
+            },
+            "frameworkWork": null
+          },
+          {
+            "domReadyMs": 41,
+            "nextFrameMs": 101.2999999821186,
+            "domMutations": {
+              "records": 9999,
+              "attributes": 0,
+              "characterData": 1,
+              "childList": 9998,
+              "addedNodes": 4999,
+              "removedNodes": 4999
+            },
+            "frameworkWork": null
+          },
+          {
+            "domReadyMs": 41.19999998807907,
+            "nextFrameMs": 96.80000001192093,
+            "domMutations": {
+              "records": 9999,
+              "attributes": 0,
+              "characterData": 1,
+              "childList": 9998,
+              "addedNodes": 4999,
+              "removedNodes": 4999
+            },
+            "frameworkWork": null
+          },
+          {
+            "domReadyMs": 41,
+            "nextFrameMs": 102.30000001192093,
+            "domMutations": {
+              "records": 9999,
+              "attributes": 0,
+              "characterData": 1,
+              "childList": 9998,
+              "addedNodes": 4999,
+              "removedNodes": 4999
+            },
+            "frameworkWork": null
+          },
+          {
+            "domReadyMs": 41.599999994039536,
+            "nextFrameMs": 97.69999998807907,
+            "domMutations": {
+              "records": 9999,
+              "attributes": 0,
+              "characterData": 1,
+              "childList": 9998,
+              "addedNodes": 4999,
+              "removedNodes": 4999
+            },
+            "frameworkWork": null
+          },
+          {
+            "domReadyMs": 45.19999998807907,
+            "nextFrameMs": 112.40000000596046,
+            "domMutations": {
+              "records": 9999,
+              "attributes": 0,
+              "characterData": 1,
+              "childList": 9998,
+              "addedNodes": 4999,
+              "removedNodes": 4999
+            },
+            "frameworkWork": null
+          },
+          {
+            "domReadyMs": 43.69999998807907,
+            "nextFrameMs": 104.80000001192093,
+            "domMutations": {
+              "records": 9999,
+              "attributes": 0,
+              "characterData": 1,
+              "childList": 9998,
+              "addedNodes": 4999,
+              "removedNodes": 4999
+            },
+            "frameworkWork": null
+          },
+          {
+            "domReadyMs": 41.5,
+            "nextFrameMs": 129.59999999403954,
+            "domMutations": {
+              "records": 9999,
+              "attributes": 0,
+              "characterData": 1,
+              "childList": 9998,
+              "addedNodes": 4999,
+              "removedNodes": 4999
+            },
+            "frameworkWork": null
+          }
+        ]
+      }
+    },
+    "filter": {
+      "label": "global search → one row",
+      "kelta": {
+        "domReadyMs": {
+          "samples": 10,
+          "min": 16.4,
+          "median": 17.5,
+          "p95": 20.3,
+          "max": 20.3,
+          "mean": 17.95
+        },
+        "nextFrameMs": {
+          "samples": 10,
+          "min": 16.8,
+          "median": 19.5,
+          "p95": 22.7,
+          "max": 22.7,
+          "mean": 19.89
+        },
+        "raw": [
+          {
+            "domReadyMs": 18.5,
+            "nextFrameMs": 18.900000005960464,
+            "domMutations": {
+              "records": 9999,
+              "attributes": 0,
+              "characterData": 0,
+              "childList": 9999,
+              "addedNodes": 0,
+              "removedNodes": 9999
+            },
+            "frameworkWork": {
+              "patches": 0,
+              "collectionOperations": 9999,
+              "reconciliations": 1,
+              "changedRows": 0,
+              "changedCells": 1,
+              "changedAggregates": 0
+            }
+          },
+          {
+            "domReadyMs": 16.69999998807907,
+            "nextFrameMs": 22.19999998807907,
+            "domMutations": {
+              "records": 9999,
+              "attributes": 0,
+              "characterData": 0,
+              "childList": 9999,
+              "addedNodes": 0,
+              "removedNodes": 9999
+            },
+            "frameworkWork": {
+              "patches": 0,
+              "collectionOperations": 9999,
+              "reconciliations": 1,
+              "changedRows": 0,
+              "changedCells": 1,
+              "changedAggregates": 0
+            }
+          },
+          {
+            "domReadyMs": 16.400000005960464,
+            "nextFrameMs": 16.799999982118607,
+            "domMutations": {
+              "records": 9999,
+              "attributes": 0,
+              "characterData": 0,
+              "childList": 9999,
+              "addedNodes": 0,
+              "removedNodes": 9999
+            },
+            "frameworkWork": {
+              "patches": 0,
+              "collectionOperations": 9999,
+              "reconciliations": 1,
+              "changedRows": 0,
+              "changedCells": 1,
+              "changedAggregates": 0
+            }
+          },
+          {
+            "domReadyMs": 16.599999994039536,
+            "nextFrameMs": 22.200000017881393,
+            "domMutations": {
+              "records": 9999,
+              "attributes": 0,
+              "characterData": 0,
+              "childList": 9999,
+              "addedNodes": 0,
+              "removedNodes": 9999
+            },
+            "frameworkWork": {
+              "patches": 0,
+              "collectionOperations": 9999,
+              "reconciliations": 1,
+              "changedRows": 0,
+              "changedCells": 1,
+              "changedAggregates": 0
+            }
+          },
+          {
+            "domReadyMs": 18.899999976158142,
+            "nextFrameMs": 19.5,
+            "domMutations": {
+              "records": 9999,
+              "attributes": 0,
+              "characterData": 0,
+              "childList": 9999,
+              "addedNodes": 0,
+              "removedNodes": 9999
+            },
+            "frameworkWork": {
+              "patches": 0,
+              "collectionOperations": 9999,
+              "reconciliations": 1,
+              "changedRows": 0,
+              "changedCells": 1,
+              "changedAggregates": 0
+            }
+          },
+          {
+            "domReadyMs": 19.5,
+            "nextFrameMs": 19.899999976158142,
+            "domMutations": {
+              "records": 9999,
+              "attributes": 0,
+              "characterData": 0,
+              "childList": 9999,
+              "addedNodes": 0,
+              "removedNodes": 9999
+            },
+            "frameworkWork": {
+              "patches": 0,
+              "collectionOperations": 9999,
+              "reconciliations": 1,
+              "changedRows": 0,
+              "changedCells": 1,
+              "changedAggregates": 0
+            }
+          },
+          {
+            "domReadyMs": 17.5,
+            "nextFrameMs": 17.900000005960464,
+            "domMutations": {
+              "records": 9999,
+              "attributes": 0,
+              "characterData": 0,
+              "childList": 9999,
+              "addedNodes": 0,
+              "removedNodes": 9999
+            },
+            "frameworkWork": {
+              "patches": 0,
+              "collectionOperations": 9999,
+              "reconciliations": 1,
+              "changedRows": 0,
+              "changedCells": 1,
+              "changedAggregates": 0
+            }
+          },
+          {
+            "domReadyMs": 17.799999982118607,
+            "nextFrameMs": 18.099999994039536,
+            "domMutations": {
+              "records": 9999,
+              "attributes": 0,
+              "characterData": 0,
+              "childList": 9999,
+              "addedNodes": 0,
+              "removedNodes": 9999
+            },
+            "frameworkWork": {
+              "patches": 0,
+              "collectionOperations": 9999,
+              "reconciliations": 1,
+              "changedRows": 0,
+              "changedCells": 1,
+              "changedAggregates": 0
+            }
+          },
+          {
+            "domReadyMs": 17.30000001192093,
+            "nextFrameMs": 22.700000017881393,
+            "domMutations": {
+              "records": 9999,
+              "attributes": 0,
+              "characterData": 0,
+              "childList": 9999,
+              "addedNodes": 0,
+              "removedNodes": 9999
+            },
+            "frameworkWork": {
+              "patches": 0,
+              "collectionOperations": 9999,
+              "reconciliations": 1,
+              "changedRows": 0,
+              "changedCells": 1,
+              "changedAggregates": 0
+            }
+          },
+          {
+            "domReadyMs": 20.30000001192093,
+            "nextFrameMs": 20.700000017881393,
+            "domMutations": {
+              "records": 9999,
+              "attributes": 0,
+              "characterData": 0,
+              "childList": 9999,
+              "addedNodes": 0,
+              "removedNodes": 9999
+            },
+            "frameworkWork": {
+              "patches": 0,
+              "collectionOperations": 9999,
+              "reconciliations": 1,
+              "changedRows": 0,
+              "changedCells": 1,
+              "changedAggregates": 0
+            }
+          }
+        ]
+      },
+      "react": {
+        "domReadyMs": {
+          "samples": 10,
+          "min": 13.5,
+          "median": 14.5,
+          "p95": 17.5,
+          "max": 17.5,
+          "mean": 14.94
+        },
+        "nextFrameMs": {
+          "samples": 10,
+          "min": 13.9,
+          "median": 15.6,
+          "p95": 20.4,
+          "max": 20.4,
+          "mean": 16.6
+        },
+        "raw": [
+          {
+            "domReadyMs": 14.699999988079071,
+            "nextFrameMs": 20.400000005960464,
+            "domMutations": {
+              "records": 9999,
+              "attributes": 0,
+              "characterData": 0,
+              "childList": 9999,
+              "addedNodes": 0,
+              "removedNodes": 9999
+            },
+            "frameworkWork": null
+          },
+          {
+            "domReadyMs": 17.5,
+            "nextFrameMs": 17.899999976158142,
+            "domMutations": {
+              "records": 9999,
+              "attributes": 0,
+              "characterData": 0,
+              "childList": 9999,
+              "addedNodes": 0,
+              "removedNodes": 9999
+            },
+            "frameworkWork": null
+          },
+          {
+            "domReadyMs": 13.5,
+            "nextFrameMs": 18.900000005960464,
+            "domMutations": {
+              "records": 9999,
+              "attributes": 0,
+              "characterData": 0,
+              "childList": 9999,
+              "addedNodes": 0,
+              "removedNodes": 9999
+            },
+            "frameworkWork": null
+          },
+          {
+            "domReadyMs": 13.900000005960464,
+            "nextFrameMs": 14.800000011920929,
+            "domMutations": {
+              "records": 9999,
+              "attributes": 0,
+              "characterData": 0,
+              "childList": 9999,
+              "addedNodes": 0,
+              "removedNodes": 9999
+            },
+            "frameworkWork": null
+          },
+          {
+            "domReadyMs": 14.5,
+            "nextFrameMs": 14.800000011920929,
+            "domMutations": {
+              "records": 9999,
+              "attributes": 0,
+              "characterData": 0,
+              "childList": 9999,
+              "addedNodes": 0,
+              "removedNodes": 9999
+            },
+            "frameworkWork": null
+          },
+          {
+            "domReadyMs": 13.800000011920929,
+            "nextFrameMs": 15.599999994039536,
+            "domMutations": {
+              "records": 9999,
+              "attributes": 0,
+              "characterData": 0,
+              "childList": 9999,
+              "addedNodes": 0,
+              "removedNodes": 9999
+            },
+            "frameworkWork": null
+          },
+          {
+            "domReadyMs": 13.600000023841858,
+            "nextFrameMs": 13.900000005960464,
+            "domMutations": {
+              "records": 9999,
+              "attributes": 0,
+              "characterData": 0,
+              "childList": 9999,
+              "addedNodes": 0,
+              "removedNodes": 9999
+            },
+            "frameworkWork": null
+          },
+          {
+            "domReadyMs": 16.400000005960464,
+            "nextFrameMs": 16.80000001192093,
+            "domMutations": {
+              "records": 9999,
+              "attributes": 0,
+              "characterData": 0,
+              "childList": 9999,
+              "addedNodes": 0,
+              "removedNodes": 9999
+            },
+            "frameworkWork": null
+          },
+          {
+            "domReadyMs": 14.600000023841858,
+            "nextFrameMs": 14.900000005960464,
+            "domMutations": {
+              "records": 9999,
+              "attributes": 0,
+              "characterData": 0,
+              "childList": 9999,
+              "addedNodes": 0,
+              "removedNodes": 9999
+            },
+            "frameworkWork": null
+          },
+          {
+            "domReadyMs": 16.899999976158142,
+            "nextFrameMs": 18,
+            "domMutations": {
+              "records": 9999,
+              "attributes": 0,
+              "characterData": 0,
+              "childList": 9999,
+              "addedNodes": 0,
+              "removedNodes": 9999
+            },
+            "frameworkWork": null
+          }
+        ]
+      }
+    }
+  },
+  "correctness": {
+    "matchedRows": 10000,
+    "hydrationRecoverableErrors": 0,
+    "everyMeasuredMutationAsserted": true,
+    "secondaryBindingsAsserted": true,
+    "keyedNodeIdentityAsserted": true,
+    "realClickEvents": true
+  },
+  "notes": [
+    "Production bundles; React StrictMode and development diagnostics are disabled.",
+    "React uses React Compiler 1.0 and an idiomatic immutable reducer with stable numeric keys.",
+    "DOM-ready ends when the expected DOM state is observable; next-frame ends at the next requestAnimationFrame callback.",
+    "HTML insertion and JavaScript parse/evaluation are excluded from activation timing and reported separately as artifact sizes.",
+    "MutationObserver cannot see property-only assignments; framework-specific telemetry is kept separate from DOM mutation records.",
+    "This is a synchronous non-virtualized list/query workload, not a universal frontend score."
+  ],
+  "host": {
+    "platform": "darwin",
+    "release": "25.5.0",
+    "arch": "arm64",
+    "cpuModel": "Apple M5 Max",
+    "logicalCores": 18,
+    "totalMemoryGiB": 128
+  },
+  "source": {
+    "gitRevision": "0caf5adffd0937f2536a112f47343e85db042eb4",
+    "gitDirty": true,
+    "nodeVersion": "v24.18.0",
+    "packageLockSha256": "640574fc2f820b8c77241b31fab2d4a73a73c56557a65b3b2a9d2a5664715c53",
+    "measuredSourceSha256": "a41ea53bb1f76e6bae2ec9497fdcf5ba8ca0fc26cbd5ddf361acc8065a435986",
+    "measuredFileCount": 13,
+    "measuredFiles": [
+      "benchmarks/react-comparison/browser.mjs",
+      "benchmarks/react-comparison/build.mjs",
+      "benchmarks/react-comparison/kelta-app.mjs",
+      "benchmarks/react-comparison/react-app.jsx",
+      "benchmarks/react-comparison/run.mjs",
+      "benchmarks/react-comparison/runner.html",
+      "benchmarks/react-comparison/style.css",
+      "package.json",
+      "src/compiler.js",
+      "src/index.js",
+      "src/ir.js",
+      "src/runtime/browser.js",
+      "src/runtime/engine.js"
+    ]
+  },
+  "runCommand": "node benchmarks/react-comparison/run.mjs --rows 10000 --activation-samples 3 --warmups 2 --samples 10 --broad-samples 10 --output benchmarks/react-comparison/results"
+}

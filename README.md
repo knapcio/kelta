@@ -15,6 +15,8 @@ There are no runtime components, render-function replays or virtual DOM trees. K
 
 > Research status: the core execution model is working and tested. Kelta is not yet a production framework.
 
+[Documentation and live demo](https://knapcio.github.io/kelta/) · [React comparison](https://knapcio.github.io/kelta/benchmark.html)
+
 ## Why Kelta?
 
 The name combines **kinetic** and **delta**: motion produced by change. The compiler's job is not to rerender an application—it derives the smallest valid output change from an input delta.
@@ -29,7 +31,7 @@ The prototype demonstrates:
 - keyed insertion, removal and identity-preserving movement;
 - server rendering and browser resumption without view replay;
 - delegated event routing without serialized closures;
-- zero third-party runtime or build dependencies.
+- zero third-party dependencies in the Kelta runtime and compiler core (the comparison harness uses pinned development tools).
 
 ## Quick start
 
@@ -49,7 +51,10 @@ Individual commands:
 npm test        # compiler, runtime, transaction and marker semantics
 npm run build   # SSR HTML, resume capsule and browser plan
 npm run bench   # 10,000-row incremental engine proof
+npm run bench:react  # matched production React browser comparison
 npm run serve   # serve an existing dist/ build
+npm run pages:build  # assemble docs, live demo and benchmark page
+npm run pages:serve  # preview the Pages artifact locally
 ```
 
 ## How it works
@@ -113,7 +118,13 @@ The included benchmark creates 10,000 rows and then changes one row's sort key. 
 }
 ```
 
-See [`docs/benchmarks.md`](docs/benchmarks.md) for methodology and the workloads required before making broader performance claims.
+See [`docs/benchmarks.md`](docs/benchmarks.md) for the engine contract and [`docs/react-comparison.md`](docs/react-comparison.md) for the matched React 19 + React Compiler browser methodology, raw-result format and caveats.
+
+### Preliminary React result
+
+The checked-in 10,000-row run is deliberately not presented as a universal score. On the recorded Chrome 150 machine, React 19.2.7 + React Compiler 1.0 activates roughly 10× faster and wins the scalar and broad-filter workloads. Kelta wins the keyed midpoint-to-front DOM-ready workload by roughly 6×. Brotli totals are close; Kelta's raw and gzip totals are larger.
+
+See the [human-readable result](benchmarks/react-comparison/results/latest.md) and [raw samples](benchmarks/react-comparison/results/latest.json). These findings make activation indexing and plan-data deduplication explicit roadmap work rather than hidden prototype debt.
 
 ## Repository map
 
@@ -124,8 +135,11 @@ src/runtime/engine.js     transactions and incremental query maintenance
 src/runtime/browser.js    resumption, delegated events and DOM patches
 examples/tasks/           compiled demonstration application
 benchmarks/engine.mjs     10,000-row delta benchmark
+benchmarks/react-comparison/ production React browser comparison
 test/                     compiler and runtime behavior
 docs/architecture.md      semantics, guarantees and deliberate limits
+docs/react-comparison.md  fair-baseline methodology and result boundaries
+site/                     GitHub Pages documentation and live demo
 ROADMAP.md                staged path from prototype to credible system
 ```
 

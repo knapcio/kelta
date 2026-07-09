@@ -23,3 +23,5 @@ jobs:
           cache: npm
       - run: npm ci --ignore-scripts
       - run: npm run check
+      - if: matrix.node == 24
+        run: npm run pages:build
