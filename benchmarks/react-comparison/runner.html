@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="color-scheme" content="dark">
+    <title>Kelta × React benchmark</title>
+    <link rel="icon" href="data:,">
+    <link rel="stylesheet" href="./style.css">
+  </head>
+  <body>
+    <main class="runner-shell">
+      <p class="eyebrow">REPRODUCIBLE BROWSER HARNESS</p>
+      <h1>Kelta <span>×</span> React</h1>
+      <p class="lede">
+        Matched server-rendered markup, real click events, asserted DOM outcomes,
+        alternating run order, raw samples. Read the methodology before the numbers.
+      </p>
+      <div class="runner-actions">
+        <button id="run-benchmark" type="button">Run comparison</button>
+        <button id="download-results" type="button" disabled>Download JSON</button>
+        <a href="https://github.com/knapcio/kelta/blob/main/docs/react-comparison.md">Methodology</a>
+      </div>
+      <p id="benchmark-status" role="status" aria-live="polite">Ready.</p>
+      <section id="benchmark-output" class="benchmark-output" aria-live="polite"></section>
+      <aside>
+        <strong>Interpretation boundary</strong>
+        <p>
+          This isolates framework activation and synchronous update work for one
+          non-virtualized list. It does not measure a whole application, network,
+          JavaScript parsing, or true presentation time.
+        </p>
+      </aside>
+    </main>
+    <div id="benchmark-sandbox" aria-hidden="true"></div>
+    <script type="module" src="./benchmark.js"></script>
+  </body>
+</html>

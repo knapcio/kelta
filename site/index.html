@@ -1,0 +1,520 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#07100d">
+    <meta
+      name="description"
+      content="Kelta is an experimental transactional frontend compiler. UI by change, not rerender."
+    >
+    <meta property="og:title" content="Kelta — UI by change, not rerender">
+    <meta
+      property="og:description"
+      content="A transactional incremental UI compiler with exact DOM updates and resumable server HTML."
+    >
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary">
+    <link rel="canonical" href="https://knapcio.github.io/kelta/">
+    <link rel="icon" href="./favicon.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="./styles.css?v=0.2.0">
+    <script src="./site.js?v=0.2.0" defer></script>
+    <title>Kelta — UI by change, not rerender</title>
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+
+    <header class="site-header">
+      <div class="header-inner">
+        <a class="brand" href="#top" aria-label="Kelta home">
+          <svg class="brand-mark" viewBox="0 0 48 48" aria-hidden="true">
+            <path d="M24 4 5 42h38L24 4Z"></path>
+            <path d="M15.5 31h17"></path>
+            <circle cx="24" cy="4" r="2.6"></circle>
+            <circle cx="5" cy="42" r="2.6"></circle>
+            <circle cx="43" cy="42" r="2.6"></circle>
+          </svg>
+          <span>KELTA</span>
+        </a>
+
+        <nav class="primary-nav" aria-label="Primary navigation">
+          <a href="#why">Why</a>
+          <a href="#architecture">Architecture</a>
+          <a href="#benchmarks">Benchmarks</a>
+          <a href="#demo">Demo</a>
+        </nav>
+
+        <a
+          class="repo-link"
+          href="https://github.com/knapcio/kelta"
+          target="_blank"
+          rel="noreferrer"
+        >
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M12 2a10 10 0 0 0-3.16 19.49c.5.09.68-.22.68-.48v-1.87c-2.78.6-3.37-1.18-3.37-1.18-.45-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.61.07-.61 1 .07 1.53 1.03 1.53 1.03.9 1.53 2.35 1.09 2.92.83.09-.65.35-1.09.64-1.34-2.22-.25-4.56-1.11-4.56-4.94 0-1.09.39-1.98 1.03-2.68-.1-.25-.45-1.27.1-2.64 0 0 .84-.27 2.75 1.02A9.6 9.6 0 0 1 12 6.82a9.6 9.6 0 0 1 2.5.34c1.91-1.29 2.75-1.02 2.75-1.02.55 1.37.2 2.39.1 2.64.64.7 1.03 1.59 1.03 2.68 0 3.84-2.34 4.68-4.57 4.93.36.31.68.92.68 1.86V21c0 .27.18.58.69.48A10 10 0 0 0 12 2Z"></path>
+          </svg>
+          <span>GitHub</span>
+        </a>
+      </div>
+    </header>
+
+    <main id="main">
+      <section class="hero page-shell" id="top" aria-labelledby="hero-title">
+        <div class="hero-copy" data-reveal>
+          <p class="status-pill">
+            <span aria-hidden="true"></span>
+            Experimental compiler · v0.1
+          </p>
+          <h1 id="hero-title">
+            UI by change,<br>
+            <em>not rerender.</em>
+          </h1>
+          <p class="hero-lede">
+            Kelta treats the DOM as a materialized view of typed state. Events
+            commit atomic transactions; data deltas become exact DOM mutations.
+            No component replay. No virtual tree diff.
+          </p>
+          <div class="hero-actions">
+            <a class="button button-primary" href="#demo">
+              Try the live runtime
+              <span aria-hidden="true">↓</span>
+            </a>
+            <a
+              class="button button-quiet"
+              href="https://github.com/knapcio/kelta"
+              target="_blank"
+              rel="noreferrer"
+            >
+              Read the source
+              <span aria-hidden="true">↗</span>
+            </a>
+          </div>
+        </div>
+
+        <div class="trace-window" data-reveal aria-label="Example Kelta transaction trace">
+          <div class="window-bar">
+            <span class="window-dots" aria-hidden="true"><i></i><i></i><i></i></span>
+            <span>transaction / 0031</span>
+            <span class="trace-live"><i aria-hidden="true"></i> committed</span>
+          </div>
+          <ol class="trace-steps">
+            <li>
+              <span class="trace-index">01</span>
+              <span class="trace-kind event">EVENT</span>
+              <code>change:e1</code>
+              <small>row 3</small>
+            </li>
+            <li>
+              <span class="trace-index">02</span>
+              <span class="trace-kind tx">TX</span>
+              <code>toggle(tasks, 3, done)</code>
+              <small>atomic</small>
+            </li>
+            <li>
+              <span class="trace-index">03</span>
+              <span class="trace-kind delta">Δ FACT</span>
+              <code>done: false → true</code>
+              <small>1 field</small>
+            </li>
+            <li>
+              <span class="trace-index">04</span>
+              <span class="trace-kind query">Δ QUERY</span>
+              <code>remaining: 4 → 3</code>
+              <small>incremental</small>
+            </li>
+            <li class="trace-output">
+              <span class="trace-index">05</span>
+              <span class="trace-kind patch">DOM</span>
+              <code>class.toggle + text.data</code>
+              <small>exact patch</small>
+            </li>
+          </ol>
+          <div class="window-foot">
+            <span>render functions</span><b>0</b>
+            <span>tree comparisons</span><b>0</b>
+            <span>committed writes</span><b>3</b>
+          </div>
+        </div>
+
+        <div class="hero-principle" data-reveal>
+          <span class="mono-label">THE MODEL</span>
+          <code>DOM = View(State)</code>
+          <span class="principle-arrow" aria-hidden="true">→</span>
+          <code>ΔDOM = derivative(View, ΔState)</code>
+        </div>
+      </section>
+
+      <section class="proof-strip" aria-label="Prototype properties">
+        <div class="page-shell proof-grid">
+          <p><strong>0</strong><span>third-party runtime dependencies</span></p>
+          <p><strong>0</strong><span>component reruns</span></p>
+          <p><strong>1</strong><span>serializable UI plan</span></p>
+          <p><strong>∞</strong><span>possible language frontends</span></p>
+        </div>
+      </section>
+
+      <section class="section page-shell" id="why" aria-labelledby="why-title">
+        <div class="section-intro" data-reveal>
+          <p class="section-kicker">01 / WHY KELTA</p>
+          <h2 id="why-title">Stop rediscovering the interface.</h2>
+          <p>
+            Most UI runtimes ask application code to describe the screen again,
+            then work out what changed. Kelta makes change the primary input.
+          </p>
+        </div>
+
+        <div class="model-comparison">
+          <article class="model-card conventional" data-reveal>
+            <div class="card-heading">
+              <span class="card-number">A</span>
+              <div>
+                <p class="mono-label">COMMON COMPONENT MODEL</p>
+                <h3>Recompute output</h3>
+              </div>
+            </div>
+            <ol class="model-flow" aria-label="Common component update flow">
+              <li>State setter fires</li>
+              <li>Component code runs again</li>
+              <li>Output trees are compared</li>
+              <li>DOM changes are discovered</li>
+            </ol>
+            <p class="card-note">Work is organized around ownership and rerender boundaries.</p>
+          </article>
+
+          <article class="model-card kelta-model" data-reveal>
+            <div class="card-heading">
+              <span class="card-number">Δ</span>
+              <div>
+                <p class="mono-label">KELTA EXECUTION MODEL</p>
+                <h3>Propagate a delta</h3>
+              </div>
+            </div>
+            <ol class="model-flow" aria-label="Kelta update flow">
+              <li>A typed transaction commits</li>
+              <li>Changed facts enter the graph</li>
+              <li>Affected queries emit deltas</li>
+              <li>Known DOM slots are patched</li>
+            </ol>
+            <p class="card-note">Work is proportional to affected data and actual output changes.</p>
+          </article>
+        </div>
+
+        <div class="principles-grid">
+          <article data-reveal>
+            <span class="principle-icon">01</span>
+            <h3>Serializable by design</h3>
+            <p>
+              The optimizable program is data, not a forest of opaque closures.
+              An AI, DSL or conventional authoring layer can emit the same plan.
+            </p>
+          </article>
+          <article data-reveal>
+            <span class="principle-icon">02</span>
+            <h3>Effects stay explicit</h3>
+            <p>
+              Transactions are synchronous, atomic and rollback-safe. Async work
+              cannot quietly keep an inconsistent render open.
+            </p>
+          </article>
+          <article data-reveal>
+            <span class="principle-icon">03</span>
+            <h3>The platform stays intact</h3>
+            <p>
+              Kelta emits semantic HTML and performs direct DOM operations. It
+              does not replace the browser with a canvas or a UI virtual machine.
+            </p>
+          </article>
+        </div>
+      </section>
+
+      <section class="section architecture-section" id="architecture" aria-labelledby="architecture-title">
+        <div class="page-shell">
+          <div class="section-intro architecture-intro" data-reveal>
+            <p class="section-kicker">02 / ARCHITECTURE</p>
+            <h2 id="architecture-title">A compiler in front.<br>A delta engine underneath.</h2>
+            <p>
+              Author a constrained graph once. The compiler validates dependencies,
+              evaluates initial queries and emits HTML, a resume capsule and a
+              precise patch plan.
+            </p>
+          </div>
+
+          <ol class="architecture-flow" aria-label="Kelta compilation and update pipeline">
+            <li data-reveal>
+              <span>01</span>
+              <div><strong>Typed facts</strong><small>cells · keyed tables</small></div>
+            </li>
+            <li data-reveal>
+              <span>02</span>
+              <div><strong>Pure queries</strong><small>filter · order · aggregate</small></div>
+            </li>
+            <li data-reveal>
+              <span>03</span>
+              <div><strong>Compiler plan</strong><small>bindings · routes · templates</small></div>
+            </li>
+            <li data-reveal>
+              <span>04</span>
+              <div><strong>Resumed HTML</strong><small>scan markers · retain nodes</small></div>
+            </li>
+            <li data-reveal>
+              <span>05</span>
+              <div><strong>Exact patches</strong><small>text · property · move</small></div>
+            </li>
+          </ol>
+
+          <div class="architecture-detail">
+            <article class="code-window" data-reveal>
+              <div class="window-bar">
+                <span class="window-dots" aria-hidden="true"><i></i><i></i><i></i></span>
+                <span>app.js / source IR</span>
+                <button class="copy-button" type="button" data-copy="ir-example">Copy</button>
+              </div>
+              <pre id="ir-example"><code><span class="syntax-keyword">const</span> visible = <span class="syntax-call">collection</span>(<span class="syntax-string">"tasks"</span>, {
+  where: <span class="syntax-call">ref.field</span>(<span class="syntax-string">"active"</span>),
+  orderBy: <span class="syntax-string">"rank"</span>,
+});
+
+<span class="syntax-keyword">const</span> toggle = <span class="syntax-call">transaction</span>({
+  params: { id: <span class="syntax-string">"number"</span> },
+  do: [<span class="syntax-call">mutate.toggleField</span>(
+    <span class="syntax-string">"tasks"</span>, <span class="syntax-call">ref.param</span>(<span class="syntax-string">"id"</span>), <span class="syntax-string">"done"</span>
+  )],
+});</code></pre>
+              <div class="code-caption">
+                <span>Plain serializable IR</span>
+                <span>No hooks · no render callback</span>
+              </div>
+            </article>
+
+            <div class="runtime-cards">
+              <article data-reveal>
+                <span class="runtime-label">BUILD</span>
+                <h3>Render once on the server</h3>
+                <p>
+                  Queries are evaluated ahead of time. Semantic HTML arrives with
+                  sparse markers and a versioned snapshot.
+                </p>
+                <code>HTML + resume capsule + plan</code>
+              </article>
+              <article data-reveal>
+                <span class="runtime-label">RESUME</span>
+                <h3>Bind, do not hydrate</h3>
+                <p>
+                  The browser scans existing nodes and installs delegated routes.
+                  It does not replay the view or rebuild an ownership tree.
+                </p>
+                <code>markers → direct node references</code>
+              </article>
+              <article data-reveal>
+                <span class="runtime-label">UPDATE</span>
+                <h3>Maintain the materialized view</h3>
+                <p>
+                  Field-level dependencies route a committed delta to scalar slots
+                  and keyed collection operations.
+                </p>
+                <code>Δstate → Δquery → ΔDOM</code>
+              </article>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section page-shell" id="benchmarks" aria-labelledby="benchmarks-title">
+        <div class="section-intro" data-reveal>
+          <p class="section-kicker">03 / BENCHMARK CONTRACT</p>
+          <h2 id="benchmarks-title">Count the work before timing it.</h2>
+          <p>
+            Framework timings are easy to overfit. Kelta first asserts the
+            algorithmic work caused by one change, then runs a matched browser
+            suite against production React 19 with React Compiler.
+          </p>
+        </div>
+
+        <div class="benchmark-shell" data-reveal>
+          <div class="benchmark-head">
+            <div>
+              <p class="mono-label">CURRENT ENGINE PROOF</p>
+              <h3>10,000 normalized rows</h3>
+            </div>
+            <span>one row's sort key changes</span>
+          </div>
+          <div class="benchmark-grid">
+            <article>
+              <span class="metric-value">1</span>
+              <h4>scalar patch</h4>
+              <p>The changed rank label.</p>
+              <div class="metric-line"><i style="--fill: 10%"></i></div>
+            </article>
+            <article>
+              <span class="metric-value">1</span>
+              <h4>structural move</h4>
+              <p>The existing keyed row.</p>
+              <div class="metric-line"><i style="--fill: 10%"></i></div>
+            </article>
+            <article class="zero-metric">
+              <span class="metric-value">0</span>
+              <h4>full reconciliations</h4>
+              <p>No whole-list comparison.</p>
+              <div class="metric-line"><i style="--fill: 0%"></i></div>
+            </article>
+            <article class="zero-metric">
+              <span class="metric-value">0</span>
+              <h4>component reruns</h4>
+              <p>There is no component runtime.</p>
+              <div class="metric-line"><i style="--fill: 0%"></i></div>
+            </article>
+          </div>
+          <div class="benchmark-foot">
+            <p>
+              <strong>It proves:</strong> one-row order changes are incremental in
+              this prototype.
+            </p>
+            <p>
+              <strong>It does not prove:</strong> that Kelta is universally faster
+              across startup, memory, layout, paint or application shapes.
+            </p>
+            <a
+              href="./benchmark.html"
+            >React comparison + raw results <span aria-hidden="true">→</span></a>
+          </div>
+        </div>
+      </section>
+
+      <section class="section demo-section" id="demo" aria-labelledby="demo-title">
+        <div class="page-shell">
+          <div class="section-intro demo-intro" data-reveal>
+            <p class="section-kicker">04 / LIVE RUNTIME</p>
+            <h2 id="demo-title">This is the compiled system.</h2>
+            <p>
+              The frame below is the repository's real Kelta task app: server HTML,
+              resume capsule, delegated events and the browser delta adapter.
+            </p>
+          </div>
+
+          <div class="demo-guides" aria-label="Things to try">
+            <p data-reveal><span>01</span><strong>Filter</strong> Broad dependency → keyed reconciliation</p>
+            <p data-reveal><span>02</span><strong>Toggle</strong> One field → class, property and aggregates</p>
+            <p data-reveal><span>03</span><strong>Promote ↑</strong> Sort delta → move the same DOM node</p>
+          </div>
+
+          <div class="demo-browser" data-reveal>
+            <div class="demo-chrome">
+              <span class="window-dots" aria-hidden="true"><i></i><i></i><i></i></span>
+              <span class="demo-address">kelta://compiled-example</span>
+              <span class="demo-state" id="demo-state"><i aria-hidden="true"></i> loading runtime</span>
+              <a id="demo-open" href="./demo/" target="_blank" rel="noreferrer">
+                Open full page <span aria-hidden="true">↗</span>
+              </a>
+            </div>
+            <iframe
+              id="kelta-demo"
+              title="Interactive Kelta task application"
+              loading="lazy"
+              src="./demo/"
+            ></iframe>
+            <noscript>
+              <p class="demo-fallback">
+                JavaScript is required for the interactive runtime.
+                <a href="./demo/">Open the server-rendered demo</a>.
+              </p>
+            </noscript>
+          </div>
+        </div>
+      </section>
+
+      <section class="section page-shell status-section" id="status" aria-labelledby="status-title">
+        <div class="section-intro" data-reveal>
+          <p class="section-kicker">05 / RESEARCH STATUS</p>
+          <h2 id="status-title">A working core, not a production promise.</h2>
+          <p>
+            Kelta is intentionally small enough to audit. The execution model is
+            real and tested; the ecosystem and several hard semantics are still
+            research work.
+          </p>
+        </div>
+
+        <div class="status-grid">
+          <article class="status-card works" data-reveal>
+            <p class="mono-label">WORKS TODAY / 0.1</p>
+            <ul>
+              <li>Typed cells and normalized keyed tables</li>
+              <li>Filtered and ordered collections</li>
+              <li>Incremental count and sum aggregates</li>
+              <li>Atomic transactions with rollback</li>
+              <li>SSR and browser resumption</li>
+              <li>Direct text, property, class and keyed DOM operations</li>
+            </ul>
+          </article>
+          <article class="status-card gaps" data-reveal>
+            <p class="mono-label">NOT YET / DELIBERATE GAPS</p>
+            <ul>
+              <li>Async resources and server actions</li>
+              <li>Joins, groups and nested collections</li>
+              <li>Cost-based query planning</li>
+              <li>Event-level code splitting and workers</li>
+              <li>Foreign DOM ownership boundaries</li>
+              <li>Production optimizer and compatibility guarantees</li>
+            </ul>
+          </article>
+        </div>
+
+        <div class="status-links" data-reveal>
+          <a
+            href="https://github.com/knapcio/kelta/blob/main/ROADMAP.md"
+            target="_blank"
+            rel="noreferrer"
+          >Read the roadmap <span aria-hidden="true">↗</span></a>
+          <a
+            href="https://github.com/knapcio/kelta/blob/main/docs/architecture.md"
+            target="_blank"
+            rel="noreferrer"
+          >Architecture reference <span aria-hidden="true">↗</span></a>
+          <a
+            href="https://github.com/knapcio/kelta/blob/main/CONTRIBUTING.md"
+            target="_blank"
+            rel="noreferrer"
+          >Contribute <span aria-hidden="true">↗</span></a>
+        </div>
+      </section>
+
+      <section class="closing-section">
+        <div class="page-shell closing-inner" data-reveal>
+          <svg class="closing-mark" viewBox="0 0 48 48" aria-hidden="true">
+            <path d="M24 4 5 42h38L24 4Z"></path>
+            <path d="M15.5 31h17"></path>
+          </svg>
+          <p class="section-kicker">THE EXPERIMENT IS OPEN</p>
+          <h2>Help test whether change can be the frontend primitive.</h2>
+          <div class="hero-actions">
+            <a
+              class="button button-primary"
+              href="https://github.com/knapcio/kelta"
+              target="_blank"
+              rel="noreferrer"
+            >Explore Kelta on GitHub <span aria-hidden="true">↗</span></a>
+            <a class="button button-quiet" href="#top">Back to top <span aria-hidden="true">↑</span></a>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="page-shell footer-inner">
+        <div>
+          <a class="brand footer-brand" href="#top" aria-label="Kelta home">
+            <svg class="brand-mark" viewBox="0 0 48 48" aria-hidden="true">
+              <path d="M24 4 5 42h38L24 4Z"></path>
+              <path d="M15.5 31h17"></path>
+            </svg>
+            <span>KELTA</span>
+          </a>
+          <p>UI by change, not rerender.</p>
+        </div>
+        <p class="footer-meta">
+          Experimental software · MIT licensed<br>
+          Built with semantic HTML, CSS and zero site dependencies.
+        </p>
+      </div>
+    </footer>
+  </body>
+</html>

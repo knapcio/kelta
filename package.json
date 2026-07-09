@@ -25,9 +25,22 @@
     "serve": "node scripts/serve.mjs",
     "test": "node --test",
     "bench": "node benchmarks/engine.mjs",
+    "bench:react:build": "node benchmarks/react-comparison/build.mjs",
+    "bench:react": "node benchmarks/react-comparison/run.mjs",
+    "bench:react:publication": "node benchmarks/react-comparison/run.mjs --profile publication",
+    "pages:build": "node scripts/build-pages.mjs",
+    "pages:serve": "node scripts/serve-pages.mjs",
     "check": "npm test && npm run build && npm run bench"
   },
   "engines": {
     "node": ">=20"
+  },
+  "devDependencies": {
+    "@babel/core": "7.29.7",
+    "babel-plugin-react-compiler": "1.0.0",
+    "esbuild": "0.28.1",
+    "playwright-core": "1.61.1",
+    "react": "19.2.7",
+    "react-dom": "19.2.7"
   }
 }

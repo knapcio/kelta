@@ -8,6 +8,7 @@ Kelta should earn complexity only by proving that it improves startup cost, upda
 - Differential tests comparing interpreter state/HTML with optimized patches.
 - Property-based transaction, collection and key-order tests.
 - Stable plan schema with versioned migrations.
+- Replace the prototype's repeated marker registration work with a compact activation index and enforce a 10,000-row resumption budget.
 
 ## 0.3 — Async graph
 
@@ -22,6 +23,7 @@ Kelta should earn complexity only by proving that it improves startup cost, upda
 - Fuse scalar operators and generate monomorphic hot paths.
 - Event-level chunking and prefetch policies.
 - Client-state liveness analysis for smaller resume capsules.
+- Remove duplicated initial table data from client plans when the resume capsule already owns it.
 
 ## 0.5 — Tooling and interop
 
@@ -36,3 +38,4 @@ Kelta should earn complexity only by proving that it improves startup cost, upda
 - WebAssembly kernels for compute-heavy operators, never as the default DOM layer.
 - Incremental joins, groups and windowed aggregates.
 - Multi-user intent logs and local-first replication.
+- React + incremental external-store, Solid, Svelte and direct-DOM benchmark baselines.

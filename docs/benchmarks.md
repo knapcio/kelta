@@ -20,7 +20,19 @@ Run a different cardinality with:
 ROWS=100000 npm run bench
 ```
 
-## Required future workloads
+This Node benchmark is an invariant test, not a React comparison. Its adapter does not contain a real DOM, and it excludes browser scheduling, style, layout and paint. Do not put its milliseconds beside a React browser measurement.
+
+## React browser comparison
+
+The reproducible browser suite lives in [`benchmarks/react-comparison/`](../benchmarks/react-comparison/). It compares the same server-rendered list in Kelta and production React 19.2.7 with stable React Compiler 1.0.
+
+```sh
+npm run bench:react
+```
+
+It reports activation, four matched interactions, raw samples, DOM mutation telemetry and compressed artifact sizes. Read [`docs/react-comparison.md`](react-comparison.md) for the complete methodology and interpretation boundary.
+
+## Required additional workloads
 
 1. A 10,000-row editable/filterable/sortable grid.
 2. A streaming dashboard with incremental groups and optimistic mutations.
